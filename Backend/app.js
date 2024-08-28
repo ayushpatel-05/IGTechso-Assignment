@@ -8,7 +8,7 @@ const ErrorHandler = require('./middleware/ErrorHandler');
 
 //Router Imports
 const userRoutes = require('./routes/UserRoutes');
-
+const reviewRoutes = require('./routes/ReviewRoutes');
 
 
 try {
@@ -42,6 +42,7 @@ app.get('/', (req, res, next) => {
 });
 
 app.use('/api/v1', userRoutes);
+app.use('/api/v1', reviewRoutes);
 
 
 app.use(ErrorHandler);
