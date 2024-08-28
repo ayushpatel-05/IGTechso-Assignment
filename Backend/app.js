@@ -15,7 +15,7 @@ try {
     const envFilePath = path.resolve(__dirname, 'config/.env');
     // console.log("Here: ",envFilePath);
     dotenv.config({path: envFilePath});
-    // console.log(process.env.PORT);
+    console.log(process.env.PORT);
     // console.log(process.env.MONGO_URL);
 }
 catch(err) {

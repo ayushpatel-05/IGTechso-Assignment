@@ -5,10 +5,17 @@ const catchAsyncError = require('../middleware/catchAsyncError');
 const ErrorMessage = require('../utils/errorHandler');
 
 exports.reviewCourse = catchAsyncError(async function registerUser(req, res, next) {
-    const user = new User(req.body);
-    await user.save();
+    let { title, stars, image, courseId } = req.body;
+    let { user } = req;
+    user = user._id;
+    if(!courseId)courseId = 1;
+    stars = parseInt(stars);
+    
+    const review = new Review({title, stars, image, user, courseId});
+    await review.save();
 
-    sendToken(user, 201, res);
+    res.status(201).send("Review posted!!");
+    // sendToken(user, 201, res);
 });
 
 
