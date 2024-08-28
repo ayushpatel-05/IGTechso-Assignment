@@ -4,6 +4,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const path = require('path')
 const connection = require('./config/database');
+const ErrorHandler = require('./middleware/ErrorHandler');
 
 //Router Imports
 const userRoutes = require('./routes/UserRoutes');
@@ -12,10 +13,10 @@ const userRoutes = require('./routes/UserRoutes');
 
 try {
     const envFilePath = path.resolve(__dirname, 'config/.env');
-    console.log("Here: ",envFilePath);
+    // console.log("Here: ",envFilePath);
     dotenv.config({path: envFilePath});
-    console.log(process.env.PORT);
-    console.log(process.env.MONGO_URL);
+    // console.log(process.env.PORT);
+    // console.log(process.env.MONGO_URL);
 }
 catch(err) {
     console.log("Env Config Error:", err);
@@ -40,7 +41,10 @@ app.get('/', (req, res, next) => {
     res.send("Hello World");
 });
 
-app.use('/api/vi', userRoutes);
+app.use('/api/v1', userRoutes);
+
+
+app.use(ErrorHandler);
 
 // const 
 const PORT = process.env.PORT || 3000;
