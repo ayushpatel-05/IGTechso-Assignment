@@ -6,9 +6,16 @@ const sendToken = async (user, statusCode, res) => {
         httpOnly: false
     }
 
+    const userInfo = user.toObject();
+    if(userInfo.password) {
+        delete userInfo.password;
+    }
+    delete userInfo._id;
+    delete userInfo.__v;
+
     res.status(statusCode).cookie('token', token, cookieOptions).json({
         success: true,
-        user
+        userInfo
     });
 }
 
