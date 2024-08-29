@@ -19,22 +19,25 @@ exports.reviewCourse = catchAsyncError(async function registerUser(req, res, nex
 });
 
 
-exports.loginUser = catchAsyncError(async(req, res, next) => {
-    const { email, password} = req.body;
+exports.getReviewById = catchAsyncError(async function registerUser(req, res, next) {
+    let { id } = req.params;
 
-    if(!email || !password) {
-        return next(new ErrorMessage('Please enter email and password', 400));
-    }
+    const review = await Review.findById(id)
+    .select("-_id -__v")
+    .populate('user', '-_id -__v -email')
+    .exec();
 
-    const user = await User.findOne({email}).select("+password");
-    if(!user) {
-        return next(new ErrorMessage("Invalid Email or Password", 401));
-    }
+    console.log(review);
+    res.status(200).send(review);
+    // sendToken(user, 201, res);
+});
 
-    const isPasswordCorrect = user.comparePassword(password);
+//Need to also delete the associated cloudinary image
+exports.deleteReviewById = catchAsyncError(async function registerUser(req, res, next) {
+    let { id } = req.params;
 
-    if(!isPasswordCorrect) {
-        return next(new ErrorHandler("Invalid email or password", 401));
-    }
-    await sendToken(user, 200, res);
-})
+    const review = await Review.deleteOne({_id: id});
+    console.log(review);
+    res.status(204).send("Review Deleted");
+    // sendToken(user, 201, res);
+});
