@@ -1,7 +1,7 @@
 const express = require("express");
 const upload = require('../config/multer-config');
 // const { registerUser, loginUser } = require('../controllers/UserController');
-const { reviewCourse, getReviewById, deleteReviewById, updateReviewById } = require('../controllers/ReviewController');
+const { reviewCourse, getReviewById, deleteReviewById, updateReviewById, getReviews } = require('../controllers/ReviewController');
 const { isAuthenticatedUser } = require("../middleware/auth");
 const { imageUpload } = require('../middleware/imageUpload');
 
@@ -14,6 +14,7 @@ router.post('/review', isAuthenticatedUser, upload.single('reviewImage'), imageU
 router.put('/review/:id', isAuthenticatedUser, upload.single('reviewImage'), imageUpload, updateReviewById)
 router.get('/review/:id',getReviewById);
 router.delete('/review/:id', isAuthenticatedUser, deleteReviewById);
+router.get('/review', getReviews);
 
 // router.post('/login', loginUser);
 // router.post('/authenticate', isAuthenticatedUser, (req, res) => {

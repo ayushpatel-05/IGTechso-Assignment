@@ -77,3 +77,30 @@ exports.updateReviewById = catchAsyncError(async function updateReviewById(req, 
     await review.save();
     res.status(200).send("Review Updated");
 });
+
+
+exports.getReviews = catchAsyncError(async function getReviews(req, res, next) {
+    const { page = 1, limit = 5 } = req.query;
+    const skip = (page - 1) * limit;
+
+    const reviews = await Review.find()
+        .skip(skip)
+        .limit(parseInt(limit))
+        .exec();
+
+    
+    if (!reviews || reviews.length === 0) {
+        return next(new ErrorMessage("No reviews found", 404));
+    }
+
+    const response = await Promise.all(
+        reviews.map(async (review) => {
+            review.viewCount++;
+            await review.save();
+            return formatReview(review); 
+        })
+    );
+
+  
+    res.status(200).send(response);
+});
