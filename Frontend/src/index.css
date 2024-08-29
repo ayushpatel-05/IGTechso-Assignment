@@ -2,3 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* styles/globals.css or any other global stylesheet */
+.slick-dots {
+    bottom: -30px; /* Adjust position of dots */
+  }
+  
+  .slick-arrow {
+    z-index: 10; /* Ensure arrows are above content */
+    color: #4a4a4a; /* Change to the desired color */
+  }
+  
+  .slick-prev {
+    left: 2rem; /* Adjust position of the left arrow */
+  }
+  
+  .slick-next {
+    right: 2rem; /* Adjust position of the right arrow */
+  }
