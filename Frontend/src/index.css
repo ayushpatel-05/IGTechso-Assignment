@@ -33,8 +33,13 @@
 .slick-list {
     margin-left: 8px;
     margin-right: 8px;
+    flex: 1;
 }
 
-  .slick-dots li.slick-active button:before {
+.slick-dots li.slick-active button:before {
     color:orange !important;
-  }
+}
+
+  /* .slick-slide.slick-cloned {
+    display: none;
+  } */

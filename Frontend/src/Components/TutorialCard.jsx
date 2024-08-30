@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { FaStar, FaEye } from 'react-icons/fa'; // Import icons for stars and eye
 
 const TutorialCard = ({ image, stars = 5.0, reviewCount, tutorialTitle, viewCount }) => {

@@ -1,3 +1,4 @@
+// eslint-disable-next-line react/prop-types
 const FeatureCard = ({ number, feature, color }) => {
     const headingClassName = `font-dm-sans text-7xl font-bold text-[${color}]`
     console.log(headingClassName);

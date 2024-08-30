@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { FaStar, FaEye, FaChevronDown } from 'react-icons/fa';
 import videoPlayer from '../assets/VideoPlayer.png'
 

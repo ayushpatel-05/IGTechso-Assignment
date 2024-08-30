@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import FunctionCard from "./FunctionCard";
 
 export default function Working() {
