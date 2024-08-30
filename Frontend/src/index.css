@@ -3,19 +3,38 @@
 @tailwind utilities;
 
 /* styles/globals.css or any other global stylesheet */
-.slick-dots {
-    bottom: -30px; /* Adjust position of dots */
+@layer base{
+    body {
+      /* background-color: #14161b; */
+    }
+  }
+  
+  .slick-slide > div {
+    margin: 0 10px;
   }
   
   .slick-arrow {
-    z-index: 10; /* Ensure arrows are above content */
-    color: #4a4a4a; /* Change to the desired color */
-  }
-  
-  .slick-prev {
-    left: 2rem; /* Adjust position of the left arrow */
-  }
-  
-  .slick-next {
-    right: 2rem; /* Adjust position of the right arrow */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    color: white; /* White arrow color */
+    border-radius: 50%; /* Circular shape */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.slick-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Darker on hover */
+}
+
+.slick-list {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+  .slick-dots li.slick-active button:before {
+    color:orange !important;
   }

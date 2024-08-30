@@ -2,7 +2,7 @@ import { FaStar, FaEye } from 'react-icons/fa'; // Import icons for stars and ey
 
 const TutorialCard = ({ image, stars = 5.0, reviewCount, tutorialTitle, viewCount }) => {
   return (
-    <div className="bg-white shadow-md rounded-lg overflow-hidden max-w-sm mx-auto">
+    <div className="bg-white overflow-hidden max-w-sm mx-auto">
       {/* Image at the top */}
       <img src={image} alt="Tutorial" className="w-full h-48 object-cover" />
 
@@ -17,12 +17,12 @@ const TutorialCard = ({ image, stars = 5.0, reviewCount, tutorialTitle, viewCoun
       </div>
 
       {/* Tutorial title */}
-      <div className="p-4">
+      <div>
         <h2 className="text-xl font-bold text-gray-800">{tutorialTitle}</h2>
       </div>
 
       {/* Eye icon with number of views */}
-      <div className="flex items-center p-4 border-t border-gray-200">
+      <div className="flex items-center p-4 ">
         <FaEye className="text-gray-500 text-xl" />
         <p className="ml-2 text-gray-500">{viewCount} Views</p>
       </div>

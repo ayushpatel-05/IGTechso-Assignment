@@ -1,8 +1,12 @@
-import React from 'react';
-import AwesomeSlider from 'react-awesome-slider';
-import 'react-awesome-slider/dist/styles.css'; // Import slider styles
+// import React from 'react';
+// import AwesomeSlider from 'react-awesome-slider';
+// import 'react-awesome-slider/dist/styles.css'; // Import slider styles
 import cardImage from '../assets/startGrid.png';
 import TutorialCard from './TutorialCard';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
 
 const sliderData = [
   {
@@ -29,44 +33,29 @@ const sliderData = [
 ];
 
 export default function Features() {
-  return (
-    <div className="mt-[80px]">
-      <h1 className="text-2xl font-bold mb-4">QUALITY FEATURES</h1>
-      <h2 className="text-xl font-semibold mb-8">Tutorials that people love most</h2>
+  const settings = {
+    // dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1
+  };
 
-      <div className="relative">
-        <AwesomeSlider
-          className="my-awesome-slider"
-          bullets={true}
-          infinite={true}
-          media={[
-            <TutorialCard
-              key={1}
-              image={sliderData[0].image}
-              reviewCount={sliderData[0].reviewCount}
-              stars={sliderData[0].stars}
-              tutorialTitle={sliderData[0].tutorialTitle}
-              viewCount={sliderData[0].viewCount}
-            />,
-            <TutorialCard
-              key={2}
-              image={sliderData[1].image}
-              reviewCount={sliderData[1].reviewCount}
-              stars={sliderData[1].stars}
-              tutorialTitle={sliderData[1].tutorialTitle}
-              viewCount={sliderData[1].viewCount}
-            />,
-            <TutorialCard
-              key={3}
-              image={sliderData[2].image}
-              reviewCount={sliderData[2].reviewCount}
-              stars={sliderData[2].stars}
-              tutorialTitle={sliderData[2].tutorialTitle}
-              viewCount={sliderData[2].viewCount}
-            />,
-          ]}
-        />
+  return (
+    <div className="mt-[80px] flex flex-col items-center">
+      <h1 className="text-2xl font-bold mb-2 text-[#EF9E48] text-sm">QUALITY FEATURES</h1>
+      <h2 className="text-2xl font-semibold mb-8">Tutorials that people love most</h2>
+
+      <div className='w-3/4 m-auto'>
+      <div className="mt-14 mb-20">
+      <Slider {...settings}>
+        {sliderData.map((d, index) => (
+          <TutorialCard {...d} key={index}></TutorialCard>
+        ))}
+      </Slider>
       </div>
+      
+    </div>
     </div>
   );
 }

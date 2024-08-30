@@ -2,7 +2,7 @@ import { FaCrown } from 'react-icons/fa';
 
 const Navbar = () => {
   return (
-    <nav className="w-[1400px] flex items-center justify-between pt-6 z-10 mx-auto">
+    <nav className="flex items-center justify-between pt-6 z-10">
       <div className="flex items-center">
         <FaCrown className="h-8 w-8 mr-3" />
         <span className="text-xl font-bold text-gray-800">Landguru</span>
